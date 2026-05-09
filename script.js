@@ -10,7 +10,7 @@ const MENU_DATA = [
         category: "coffee",
         price: 5500,
         description: "Expresso de especialidad infusionado con flores de lavanda orgánica.",
-        image: "assets/images/products/coffee/Latte de lavanda.jpg",
+        image: "/assets/images/products/coffee/latte-de-lavanda.jpg",
         tags: ["Floral", "Bestseller"]
     },
     {
@@ -19,7 +19,7 @@ const MENU_DATA = [
         category: "coffee",
         price: 6200,
         description: "Cold brew de 12 horas con notas cítricas y miel.",
-        image: "assets/images/products/coffee/Kyoto Cold brew.jpg",
+        image: "/assets/images/products/coffee/kyoto-cold-brew.jpg",
         tags: ["Frío", "Premium"]
     },
     {
@@ -28,7 +28,7 @@ const MENU_DATA = [
         category: "tea",
         price: 4800,
         description: "Té negro premium con bergamota de Calabria y pétalos de aciano.",
-        image: "assets/images/products/tea/Earlye grey royal te.webp",
+        image: "/assets/images/products/tea/earlye-grey-royal-te.webp",
         tags: ["Elegante"]
     },
     {
@@ -37,7 +37,7 @@ const MENU_DATA = [
         category: "frappe",
         price: 6800,
         description: "Crema de avellanas tostadas, cacao puro y hielo triturado.",
-        image: "assets/images/products/frappe/Frappe de avellana.webp",
+        image: "/assets/images/products/frappe/frappe-de-avellana.webp",
         tags: ["Nuevo"]
     },
     {
@@ -46,7 +46,7 @@ const MENU_DATA = [
         category: "pastry",
         price: 4500,
         description: "Hojaldre artesanal francés con crema de almendras y aroma de azahar.",
-        image: "assets/images/products/pastry/Croisant de almendra.jpeg",
+        image: "/assets/images/products/pastry/croisant-de-almendra.jpeg",
         tags: ["Artesanal"]
     },
     {
@@ -55,7 +55,7 @@ const MENU_DATA = [
         category: "coffee",
         price: 5000,
         description: "Doble shot de expresso con leche micro-cremada sedosa.",
-        image: "assets/images/products/coffee/Flat white velvet.jpeg",
+        image: "/assets/images/products/coffee/flat-white-velvet.jpeg",
         tags: ["Clásico"]
     },
     {
@@ -64,7 +64,7 @@ const MENU_DATA = [
         category: "pastry",
         price: 2500,
         description: "Clásica medialuna de manteca, suave y almibarada.",
-        image: "assets/images/products/pastry/Media luna de manteca.jpg",
+        image: "/assets/images/products/pastry/media-luna-de-manteca.jpg",
         tags: ["Clásico"]
     },
     {
@@ -73,7 +73,7 @@ const MENU_DATA = [
         category: "pastry",
         price: 4000,
         description: "Esponjoso rollo de canela con glaseado de queso crema.",
-        image: "assets/images/products/pastry/Rollos de canela.webp",
+        image: "/assets/images/products/pastry/rollos-de-canela.webp",
         tags: ["Dulce"]
     },
     {
@@ -82,7 +82,7 @@ const MENU_DATA = [
         category: "pastry",
         price: 3800,
         description: "Brownie húmedo de chocolate semi-amargo con nueces.",
-        image: "assets/images/products/pastry/Brownie.jpeg",
+        image: "/assets/images/products/pastry/brownie.jpeg",
         tags: ["Intenso"]
     },
     {
@@ -91,7 +91,7 @@ const MENU_DATA = [
         category: "frappe",
         price: 6500,
         description: "Frappé cremoso con galletas Oreo trituradas y crema batida.",
-        image: "assets/images/products/frappe/Frappe de oreo.jpeg",
+        image: "/assets/images/products/frappe/frappe-de-oreo.jpeg",
         tags: ["Dulce"]
     },
     {
@@ -100,7 +100,7 @@ const MENU_DATA = [
         category: "tea",
         price: 3500,
         description: "Infusión relajante de flores de manzanilla naturales.",
-        image: "assets/images/products/tea/INfusion de manzanilla.webp",
+        image: "/assets/images/products/tea/infusion-de-manzanilla.webp",
         tags: ["Suave"]
     },
     {
@@ -109,20 +109,20 @@ const MENU_DATA = [
         category: "tea",
         price: 4200,
         description: "Té verde japonés tradicional con notas herbáceas.",
-        image: "assets/images/products/tea/Te verde.jpg",
+        image: "/assets/images/products/tea/te-verde.jpg",
         tags: ["Detox"]
     }
 ];
 
 const GALLERY_DATA = [
-    "assets/images/gallery/Coffee_shop_exterior_interior_202605091452.jpeg",
-    "assets/images/gallery/Coffee_shop_interior_Buenos_Aires_202605091454.jpeg",
-    "assets/images/gallery/Gemini_Generated_Image_ba408pba408pba40.png",
-    "assets/images/gallery/Gemini_Generated_Image_v0h59lv0h59lv0h5.png",
-    "assets/images/gallery/Gemini_Generated_Image_2uwvqi2uwvqi2uwv.png",
-    "assets/images/gallery/Gemini_Generated_Image_k9tujzk9tujzk9tu.png",
-    "assets/images/gallery/Gemini_Generated_Image_oq6cygoq6cygoq6c.png",
-    "assets/images/gallery/Gemini_Generated_Image_rdalu1rdalu1rdal.png"
+    "/assets/images/gallery/coffee_shop_exterior_interior_202605091452.jpeg",
+    "/assets/images/gallery/coffee_shop_interior_buenos_aires_202605091454.jpeg",
+    "/assets/images/gallery/gemini_generated_image_ba408pba408pba40.png",
+    "/assets/images/gallery/gemini_generated_image_v0h59lv0h59lv0h5.png",
+    "/assets/images/gallery/gemini_generated_image_2uwvqi2uwvqi2uwv.png",
+    "/assets/images/gallery/gemini_generated_image_k9tujzk9tujzk9tu.png",
+    "/assets/images/gallery/gemini_generated_image_oq6cygoq6cygoq6c.png",
+    "/assets/images/gallery/gemini_generated_image_rdalu1rdalu1rdal.png"
 ];
 
 // --- APP STATE ---
@@ -130,22 +130,30 @@ let cart = [];
 let currentSlide = 0;
 
 // --- INITIALIZATION ---
-document.addEventListener('DOMContentLoaded', () => {
-    initLoader();
-    initSlideshow();
-    initNavbar();
-    initMenu();
-    initFeatured();
-    initGallery();
-    initAnimations();
-    initStats();
-    initNewsletter();
-});
+function startApp() {
+    try { initLoader(); } catch(e) { console.error('initLoader error:', e); }
+    try { initSlideshow(); } catch(e) { console.error('initSlideshow error:', e); }
+    try { initNavbar(); } catch(e) { console.error('initNavbar error:', e); }
+    try { initMenu(); } catch(e) { console.error('initMenu error:', e); }
+    try { initFeatured(); } catch(e) { console.error('initFeatured error:', e); }
+    try { initGallery(); } catch(e) { console.error('initGallery error:', e); }
+    try { initAnimations(); } catch(e) { console.error('initAnimations error:', e); }
+    try { initStats(); } catch(e) { console.error('initStats error:', e); }
+    try { initNewsletter(); } catch(e) { console.error('initNewsletter error:', e); }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startApp);
+} else {
+    startApp();
+}
 
 // --- LOADER ---
 function initLoader() {
     const loader = document.getElementById('loader');
+    if (!loader) return;
     setTimeout(() => {
+        loader.style.transition = 'transform 1s cubic-bezier(0.77, 0, 0.175, 1)';
         loader.style.transform = 'translateY(-100%)';
         document.body.style.overflow = 'visible';
     }, 2000);
@@ -158,7 +166,7 @@ function initSlideshow() {
 
     slides.forEach(slide => {
         if (slide.tagName === 'VIDEO') {
-            slide.playbackRate = 0.7; // A little bit slower
+            slide.playbackRate = 0.7;
         }
     });
 
@@ -167,7 +175,7 @@ function initSlideshow() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 8000); // Cambia cada 8 segundos
+        }, 8000);
     }
 }
 
@@ -179,42 +187,45 @@ function initNavbar() {
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    menuBtn.addEventListener('click', () => {
-        menuBtn.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-    });
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    }
 
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            menuBtn.classList.remove('active');
-            navMenu.classList.remove('active');
+            if (menuBtn) menuBtn.classList.remove('active');
+            if (navMenu) navMenu.classList.remove('active');
             document.body.style.overflow = '';
         });
     });
 
     window.addEventListener('scroll', () => {
-        // Nav background
-        if (window.scrollY > 100) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
+        if (nav) {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         }
 
-        // Progress bar
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        progressBar.style.width = scrolled + "%";
+        if (progressBar) {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + "%";
+        }
     });
-
-
 }
 
 // --- MENU ---
 function initMenu() {
     const grid = document.getElementById('menu-grid');
     const filterBtns = document.querySelectorAll('.filter-btn');
+    if (!grid) return;
 
     function renderMenu(items) {
         grid.innerHTML = '';
@@ -223,7 +234,7 @@ function initMenu() {
             card.className = 'menu-card fade-in';
             card.innerHTML = `
                 <div class="card-img-wrapper">
-                    <img src="${item.image}" alt="${item.name}" class="card-img" loading="lazy" referrerPolicy="no-referrer">
+                    <img src="${item.image}" alt="${item.name}" class="card-img" loading="lazy">
                 </div>
                 <div class="card-info">
                     <div class="card-tags">
@@ -234,7 +245,7 @@ function initMenu() {
                     <div class="card-footer">
                         <span class="card-price">$ ${item.price.toLocaleString()}</span>
                         <button class="add-btn" onclick="addToCart(${item.id})">
-                            <img src="assets/svgs/add-btn/icon.svg" alt="" class="btn-icon">
+                            <img src="/assets/svgs/add-btn/icon.svg" alt="" class="btn-icon">
                             Añadir
                         </button>
                     </div>
@@ -242,14 +253,12 @@ function initMenu() {
             `;
             grid.appendChild(card);
         });
-        
-        // Re-init scroll reveals for new items
+
         setTimeout(() => initAnimations(), 100);
     }
 
     renderMenu(MENU_DATA);
 
-    // Filters
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
@@ -259,15 +268,14 @@ function initMenu() {
             renderMenu(filtered);
         });
     });
-
-
 }
 
 // --- FEATURED SLIDER ---
 function initFeatured() {
     const slider = document.getElementById('featured-slider');
+    if (!slider) return;
     const featuredItems = MENU_DATA.slice(0, 4);
-    
+
     featuredItems.forEach(item => {
         const feat = document.createElement('div');
         feat.className = 'feat-item';
@@ -281,7 +289,7 @@ function initFeatured() {
                     <div class="card-footer">
                          <span class="card-price">$ ${item.price.toLocaleString()}</span>
                          <button class="btn btn-transparent-small" onclick="addToCart(${item.id})">
-                             <img src="assets/svgs/add-btn/icon.svg" alt="" class="btn-icon">
+                             <img src="/assets/svgs/add-btn/icon.svg" alt="" class="btn-icon">
                              Probar Ahora
                          </button>
                     </div>
@@ -291,11 +299,10 @@ function initFeatured() {
         slider.appendChild(feat);
     });
 
-    // Eliminamos clase si venía del marquee anterior
     slider.classList.remove('marquee-slider');
 
     let currentOffset = 0;
-    
+
     function getOffsetWidth() {
         const firstItem = slider.querySelector('.feat-item');
         return firstItem ? firstItem.offsetWidth : window.innerWidth;
@@ -304,7 +311,7 @@ function initFeatured() {
     function moveSlider(direction) {
         const itemWidth = getOffsetWidth();
         const maxOffset = -(itemWidth * (featuredItems.length - 1));
-        
+
         if (direction === 'next') {
             currentOffset = currentOffset <= maxOffset ? 0 : currentOffset - itemWidth;
         } else {
@@ -313,8 +320,10 @@ function initFeatured() {
         slider.style.transform = `translateX(${currentOffset}px)`;
     }
 
-    document.getElementById('next-feat').addEventListener('click', () => moveSlider('next'));
-    document.getElementById('prev-feat').addEventListener('click', () => moveSlider('prev'));
+    const nextBtn = document.getElementById('next-feat');
+    const prevBtn = document.getElementById('prev-feat');
+    if (nextBtn) nextBtn.addEventListener('click', () => moveSlider('next'));
+    if (prevBtn) prevBtn.addEventListener('click', () => moveSlider('prev'));
 
     window.addEventListener('resize', () => {
         currentOffset = 0;
@@ -325,14 +334,13 @@ function initFeatured() {
 // --- GALLERY ---
 function initGallery() {
     const gallery = document.querySelector('.gallery-grid');
+    if (!gallery) return;
     GALLERY_DATA.forEach(img => {
         const item = document.createElement('div');
         item.className = 'gallery-item fade-in';
         item.innerHTML = `
             <img src="${img}" alt="Cafe Gallery" loading="lazy">
-            <div class="gallery-overlay">
-                <span>Pinterest Vibes</span>
-            </div>
+            <div class="gallery-overlay"></div>
         `;
         gallery.appendChild(item);
     });
@@ -342,13 +350,13 @@ function initGallery() {
 window.addToCart = (id) => {
     const product = MENU_DATA.find(p => p.id === id);
     const existing = cart.find(item => item.product.id === id);
-    
+
     if (existing) {
         existing.quantity += 1;
     } else {
         cart.push({ product, quantity: 1 });
     }
-    
+
     updateCartUI();
 };
 
@@ -357,7 +365,7 @@ function updateCartUI() {
     const total = document.getElementById('cart-modal-total-price');
     const floatBtn = document.getElementById('floating-cart-btn');
     const floatCount = document.getElementById('floating-cart-count');
-    
+
     let totalItems = 0;
     let sum = 0;
 
@@ -365,9 +373,9 @@ function updateCartUI() {
         totalItems += item.quantity;
         sum += item.product.price * item.quantity;
     });
-    
+
     if (floatCount) floatCount.innerText = totalItems;
-    
+
     if (floatBtn) {
         if (totalItems > 0) {
             floatBtn.classList.add('visible');
@@ -375,7 +383,7 @@ function updateCartUI() {
             floatBtn.classList.remove('visible');
         }
     }
-    
+
     if (cart.length === 0) {
         if(list) list.innerHTML = '<p class="empty-msg" style="text-align:center; padding: 2rem; opacity: 0.5;">Tu carrito está vacío.</p>';
         if(total) total.innerText = '$ 0';
@@ -459,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(waBtn) {
         waBtn.addEventListener('click', () => {
             if(cart.length === 0) return;
-            
+
             const tableNum = document.getElementById('table-number').value;
             if(!tableNum) {
                 showToast('Por favor, indica tu número de mesa');
@@ -469,16 +477,16 @@ document.addEventListener('DOMContentLoaded', () => {
             let msg = "*Nuevo Pedido - L'Artiste Café* ☕\n\n";
             msg += `📍 *Mesa:* ${tableNum}\n\n`;
             let sum = 0;
-            
+
             cart.forEach(item => {
                 const subtotal = item.product.price * item.quantity;
                 sum += subtotal;
                 msg += `▪ *${item.quantity}x* ${item.product.name} - $ ${subtotal.toLocaleString()}\n`;
             });
-            
+
             msg += `\n*Total Final: $ ${sum.toLocaleString()}*\n\n`;
             msg += `¡Hola! Me gustaría confirmar este pedido.`;
-            
+
             const whatsappUrl = `https://wa.me/541172023171?text=${encodeURIComponent(msg)}`;
             window.open(whatsappUrl, '_blank');
         });
@@ -526,6 +534,7 @@ function initStats() {
 // --- NEWSLETTER & TOAST ---
 function initNewsletter() {
     const form = document.getElementById('newsletter-form');
+    if (!form) return;
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         showToast('¡Te has unido con éxito!');
@@ -547,14 +556,14 @@ function showToast(message) {
     toast.style.opacity = '0';
     toast.style.transition = 'all 0.4s ease';
     toast.innerText = message;
-    
+
     document.body.appendChild(toast);
-    
+
     setTimeout(() => {
         toast.style.opacity = '1';
         toast.style.transform = 'translateX(-50%) translateY(0)';
     }, 100);
-    
+
     setTimeout(() => {
         toast.style.opacity = '0';
         toast.style.transform = 'translateX(-50%) translateY(20px)';

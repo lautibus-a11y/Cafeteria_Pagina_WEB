@@ -13,12 +13,20 @@
     <meta property="og:type" content="website">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon/favicon.png">
-    <link rel="apple-touch-icon" href="assets/images/favicon/favicon.png">
+    <link rel="icon" type="image/png" href="/assets/images/favicon/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/images/favicon/favicon.png">
 
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Fallback: cierra el loader tras 4s si JS falla -->
+    <script>
+        setTimeout(function() {
+            var l = document.getElementById('loader');
+            if (l) { l.style.transform = 'translateY(-100%)'; document.body.style.overflow = 'visible'; }
+        }, 4000);
+    </script>
 </head>
 <body class="bg-fondo">
 
@@ -48,7 +56,7 @@
                 <a href="#gallery" class="nav-link">Galería</a>
                 <div class="nav-mobile-actions">
                      <button class="nav-btn-premium">
-                         <img src="assets/svgs/nav-btn/icon.svg" alt="" class="btn-icon">
+                         <img src="/assets/svgs/nav-btn/icon.svg" alt="" class="btn-icon">
                          Reservar
                      </button>
                 </div>
@@ -57,7 +65,7 @@
             <div class="nav-actions">
 
                 <button class="nav-btn-premium hide-mobile">
-                    <img src="assets/svgs/nav-btn/icon.svg" alt="" class="btn-icon">
+                    <img src="/assets/svgs/nav-btn/icon.svg" alt="" class="btn-icon">
                     Reservar
                 </button>
             </div>
@@ -76,10 +84,10 @@
         <section id="hero" class="hero-section">
             <div class="hero-slideshow">
                 <video class="slide active hero-video" autoplay loop muted playsinline style="object-fit: cover; width: 100%; height: 100%; animation: none;">
-                    <source src="assets/videos/hero/Modern_Buenos_Aires_coffee_shop_202605091317.mp4" type="video/mp4">
+                    <source src="/assets/videos/hero/modern_buenos_aires_coffee_shop_202605091317.mp4" type="video/mp4">
                 </video>
                 <video class="slide hero-video" autoplay loop muted playsinline style="object-fit: cover; width: 100%; height: 100%; animation: none;">
-                    <source src="assets/videos/hero/Barista_serving_coffee_and_brownie_202605082015.mp4" type="video/mp4">
+                    <source src="/assets/videos/hero/barista_serving_coffee_and_brownie_202605082015.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="hero-overlay"></div>
@@ -88,11 +96,11 @@
                 <p class="hero-subtitle reveal-text-delay">Cafetería artesanal de inspiración europea y alma minimalista japonesa.</p>
                 <div class="hero-btns reveal-text-delay-2">
                     <a href="#menu" class="btn btn-primary">
-                        <img src="assets/svgs/btn-primary/icon.svg" alt="" class="btn-icon">
+                        <img src="/assets/svgs/btn-primary/icon.svg" alt="" class="btn-icon">
                         Ver Menú
                     </a>
                     <a href="#about" class="btn btn-secondary">
-                        <img src="assets/svgs/btn-secondary/icon.svg" alt="" class="btn-icon">
+                        <img src="/assets/svgs/btn-secondary/icon.svg" alt="" class="btn-icon">
                         Nuestra Historia
                     </a>
                 </div>
@@ -148,7 +156,7 @@
         <section id="about" class="about-section bg-fondo">
             <div class="about-grid">
                 <div class="about-image-side parallax-container">
-                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=2070&auto=format&fit=crop" alt="The Coffee Shop" class="parallax-img" referrerPolicy="no-referrer">
+                    <img src="/assets/images/gallery/coffee_shop_exterior_interior_202605091452.jpeg" alt="El café L'Artiste" class="parallax-img">
                 </div>
                 <div class="about-text-side">
                     <div class="about-content-wrapper">
@@ -199,7 +207,7 @@
             <!-- Contenedor del video Atmosphere -->
             <div class="container atmosphere-video-container fade-in">
                 <video id="atmosphere-video" class="atmosphere-video" autoplay loop muted playsinline>
-                    <source src="assets/videos/atmosphere/Barista_serving_coffee_and_brownie_202605082015.mp4" type="video/mp4">
+                    <source src="/assets/videos/atmosphere/barista_serving_coffee_and_brownie_202605082015.mp4" type="video/mp4">
                 </video>
             </div>
 
@@ -211,8 +219,7 @@
                 </div>
                 
                 <div class="map-card glass-card">
-                    <!-- Mapa de Google eliminado por solicitud de privacidad -->
-                    <div class="map-placeholder" style="background: url('assets/images/gallery/Gemini_Generated_Image_ba408pba408pba40.png'); background-size: cover; height: 300px; display: flex; align-items: center; justify-content: center; position: relative;">
+                    <div class="map-placeholder" style="background: url('/assets/images/gallery/gemini_generated_image_ba408pba408pba40.png') center/cover; height: 300px; display: flex; align-items: center; justify-content: center; position: relative; border-radius: 4px; overflow: hidden;">
                         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4);"></div>
                         <span style="color: white; z-index: 1; font-family: var(--font-serif); font-size: 1.5rem; text-align: center; padding: 2rem;">Ubicados en el corazón de Palermo</span>
                     </div>
@@ -262,7 +269,9 @@
                 </div>
             </div>
             <div class="footer-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194348.13981033282!2d-3.819619522108!3d40.43786975971439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid!5e0!3m2!1ses!2ses!4v1715100000000!5m2!1ses!2ses" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div style="background: url('/assets/images/gallery/gemini_generated_image_rdalu1rdalu1rdal.png') center/cover; height: 250px; border-radius: 2px; position: relative;">
+                    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; color: white; font-family: var(--font-serif); font-size: 1.2rem;">L'Artiste Palermo</div>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 L'Artiste Café. Crafted for perfection.</p>
