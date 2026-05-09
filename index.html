@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Artiste Café | Experiencia Premium</title>
+    
+    <!-- SEO & Social -->
+    <meta name="description" content="L'Artiste Café: Especialidad en café, pastelería artesanal y una experiencia premium en Buenos Aires. Disfruta de nuestro espacio minimalista y sabores únicos.">
+    <meta name="keywords" content="café de especialidad, pastelería, l'artiste café, buenos aires, premium coffee shop">
+    <meta property="og:title" content="L'Artiste Café | Experiencia Premium">
+    <meta property="og:description" content="Especialidad en café, pastelería artesanal y una experiencia única en Buenos Aires.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon/favicon.png">
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-fondo">
+
+    <!-- Loader -->
+    <div id="loader" class="loader-overlay">
+        <div class="loader-content">
+            <span class="loader-logo">L'Artiste</span>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" id="main-logo">L'Artiste</a>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links" id="nav-menu">
+                <a href="#hero" class="nav-link">Inicio</a>
+                <a href="#menu" class="nav-link">Menú</a>
+                <a href="#featured" class="nav-link">Destacados</a>
+                <a href="#about" class="nav-link">Nosotros</a>
+                <a href="#gallery" class="nav-link">Galería</a>
+                <div class="nav-mobile-actions">
+                     <button class="nav-btn-premium">
+                         <img src="assets/svgs/nav-btn/icon.svg" alt="" class="btn-icon">
+                         Reservar
+                     </button>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+
+                <button class="nav-btn-premium hide-mobile">
+                    <img src="assets/svgs/nav-btn/icon.svg" alt="" class="btn-icon">
+                    Reservar
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-slideshow">
+                <video class="slide active hero-video" autoplay loop muted playsinline style="object-fit: cover; width: 100%; height: 100%; animation: none;">
+                    <source src="assets/videos/hero/Modern_Buenos_Aires_coffee_shop_202605091317.mp4" type="video/mp4">
+                </video>
+                <video class="slide hero-video" autoplay loop muted playsinline style="object-fit: cover; width: 100%; height: 100%; animation: none;">
+                    <source src="assets/videos/hero/Barista_serving_coffee_and_brownie_202605082015.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="reveal-text">Elevamos tu <br><span class="italic">Ritual Diario</span></h1>
+                <p class="hero-subtitle reveal-text-delay">Cafetería artesanal de inspiración europea y alma minimalista japonesa.</p>
+                <div class="hero-btns reveal-text-delay-2">
+                    <a href="#menu" class="btn btn-primary">
+                        <img src="assets/svgs/btn-primary/icon.svg" alt="" class="btn-icon">
+                        Ver Menú
+                    </a>
+                    <a href="#about" class="btn btn-secondary">
+                        <img src="assets/svgs/btn-secondary/icon.svg" alt="" class="btn-icon">
+                        Nuestra Historia
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Navigation / Filters -->
+        <section id="menu" class="menu-section bg-fondo">
+            <div class="container section-header">
+                <span class="section-tag">Nuestra Selección</span>
+                <h2 class="section-title">Menú Artesanal</h2>
+                <div class="menu-filters">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="coffee">Cafés</button>
+                    <button class="filter-btn" data-filter="frappe">Frappés</button>
+                    <button class="filter-btn" data-filter="tea">Té & Infusiones</button>
+                    <button class="filter-btn" data-filter="pastry">Pastelería</button>
+                </div>
+
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="container">
+                <div class="menu-grid" id="menu-grid">
+                    <!-- Cards will be injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products (Slider) -->
+        <section id="featured" class="featured-section">
+            <div class="container fade-in">
+                <div class="split-header">
+                    <div>
+                        <span class="section-tag">Lo más buscado</span>
+                        <h2 class="section-title">Nuestras Especialidades</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-slider-container">
+                <div class="featured-slider" id="featured-slider">
+                    <!-- Featured items will be injected by JS -->
+                </div>
+            </div>
+            <!-- Botones de carrousel centrados -->
+            <div class="slider-controls-centered fade-in">
+                <button id="prev-feat" class="slider-arrow">←</button>
+                <button id="next-feat" class="slider-arrow">→</button>
+            </div>
+        </section>
+
+        <!-- About Section (Split Screen) -->
+        <section id="about" class="about-section bg-fondo">
+            <div class="about-grid">
+                <div class="about-image-side parallax-container">
+                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=2070&auto=format&fit=crop" alt="The Coffee Shop" class="parallax-img" referrerPolicy="no-referrer">
+                </div>
+                <div class="about-text-side">
+                    <div class="about-content-wrapper">
+                        <span class="section-tag text-dark">Desde 2018</span>
+                        <h2 class="section-title">El Arte de la <br>Paciencia</h2>
+                        <p class="about-description">
+                            En L'Artiste, creemos que el café perfecto requiere tiempo, precisión y respeto por el grano. Nos inspiramos en la hospitalidad japonesa y la elegancia de los cafés parisinos para crear un refugio urbano.
+                        </p>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h3 class="stat-number" data-target="15000">0</h3>
+                                <p class="stat-label">Tazas Servidas</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3 class="stat-number" data-target="24">0</h3>
+                                <p class="stat-label">Orígenes de Grano</p>
+                            </div>
+                        </div>
+                        <div class="about-footer">
+                            <span class="about-discover-text">Conócenos</span>
+                            <div class="about-socials">
+                                <a href="#" class="about-social-icon" aria-label="Instagram">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                                </a>
+                                <a href="#" class="about-social-icon" aria-label="Pinterest">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12c.5 2.5 1.5 3.5 3 4s3.5-1 4-2.5c.5-1.5 0-4-2-4.5s-4.5.5-5 3z"></path><path d="M11 16v6"></path><path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path></svg>
+                                </a>
+                                <a href="#" class="about-social-icon" aria-label="Twitter">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section bg-fondo">
+            <div class="container section-header center">
+                <span class="section-tag">Nuestro Espacio</span>
+                <h2 class="section-title">Atmósfera L'Artiste</h2>
+            </div>
+            <div class="gallery-grid">
+                <!-- Gallery items injected by JS -->
+            </div>
+            
+            <!-- Contenedor del video Atmosphere -->
+            <div class="container atmosphere-video-container fade-in">
+                <video id="atmosphere-video" class="atmosphere-video" autoplay loop muted playsinline>
+                    <source src="assets/videos/atmosphere/Barista_serving_coffee_and_brownie_202605082015.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Contenedor del Mapa -->
+            <div class="container map-container fade-in">
+                <div class="section-header center" style="margin-top: 5rem;">
+                    <span class="section-tag">Nos ubicamos</span>
+                    <h2 class="section-title" style="font-size: 2.5rem;">Encuentra tu mesa</h2>
+                </div>
+                
+                <div class="map-card glass-card">
+                    <!-- Mapa de Google eliminado por solicitud de privacidad -->
+                    <div class="map-placeholder" style="background: url('assets/images/gallery/Gemini_Generated_Image_ba408pba408pba40.png'); background-size: cover; height: 300px; display: flex; align-items: center; justify-content: center; position: relative;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4);"></div>
+                        <span style="color: white; z-index: 1; font-family: var(--font-serif); font-size: 1.5rem; text-align: center; padding: 2rem;">Ubicados en el corazón de Palermo</span>
+                    </div>
+                    <div class="map-info">
+                        <h3>L'Artiste Café Palermo</h3>
+                        <p>Av. del Libertador 1234, Buenos Aires</p>
+                        <p>Lun - Dom | 08:00 - 21:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">L'Artiste</a>
+                    <p class="footer-desc">Redefiniendo tu ritual matutino con elegancia y pasión artesanal.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Pinterest</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <div class="info-group">
+                        <h4>Horarios</h4>
+                        <p>Lun - Vie: 07:00 - 20:00</p>
+                        <p>Sáb - Dom: 09:00 - 21:00</p>
+                    </div>
+                    <div class="info-group">
+                        <h4>Ubicación</h4>
+                        <p>Calle de la Seda 12, Distrito Premium</p>
+                        <p>Madrid, ES</p>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Únete a la Comunidad</h4>
+                    <p>Recibe noticias sobre nuevos orígenes y eventos exclusivos.</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Tu email..." required>
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194348.13981033282!2d-3.819619522108!3d40.43786975971439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid!5e0!3m2!1ses!2ses!4v1715100000000!5m2!1ses!2ses" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 L'Artiste Café. Crafted for perfection.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacidad</a>
+                    <a href="#">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Cart Button -->
+    <button id="floating-cart-btn" class="floating-cart-btn">
+        <span class="cart-icon">🛒</span>
+        <span id="floating-cart-count" class="cart-badge">0</span>
+    </button>
+
+    <!-- Cart Glassmorphism Modal -->
+    <div id="cart-modal-overlay" class="cart-modal-overlay">
+        <div class="cart-modal glass-card">
+            <div class="cart-modal-header">
+                <h3>Tu Pedido</h3>
+                <button id="close-cart-modal" class="close-btn">×</button>
+            </div>
+            <div id="cart-modal-items" class="cart-modal-content">
+                <!-- Items injected via JS -->
+            </div>
+            <div class="cart-modal-footer">
+                <div class="cart-table-selection">
+                    <label for="table-number">Número de mesa</label>
+                    <input type="number" id="table-number" placeholder="Ej: 5" min="1">
+                </div>
+                <div class="cart-modal-total">
+                    <span>Total Final:</span>
+                    <span id="cart-modal-total-price">$ 0</span>
+                </div>
+                <button id="btn-whatsapp-order" class="btn btn-whatsapp w-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.319 1.592 5.548 0 10.061-4.512 10.063-10.062 0-2.69-1.048-5.219-2.953-7.124s-4.434-2.952-7.125-2.952c-5.549 0-10.062 4.513-10.063 10.063-.001 2.032.547 3.513 1.541 5.148l-1.001 3.654 3.739-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+                    </svg>
+                    Enviar pedido por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+</body>
+</html>
