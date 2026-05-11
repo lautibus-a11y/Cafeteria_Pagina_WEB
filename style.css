@@ -28,17 +28,23 @@ input, textarea, select, button { font-size: 16px; touch-action: manipulation; }
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    overflow-y: auto;
     width: 100%;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: var(--beige);
+    background-color: transparent;
     color: var(--black);
     font-family: var(--font-sans);
     line-height: 1.6;
     overflow-x: hidden;
     width: 100%;
+    max-width: 100vw;
     position: relative;
+    overscroll-behavior-x: none;
 }
     
 /* Fondo personalizado para secciones claras */
@@ -47,6 +53,12 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+    .bg-fondo {
+        background-attachment: scroll;
+    }
 }
 
 /* Typography */
@@ -747,20 +759,31 @@ h1, h2, h3, .nav-logo {
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 85vh; }
 
 @media (max-width: 1024px) {
-    .about-grid { grid-template-columns: 1fr; }
-    .about-image-side { height: 50vh; }
+    .about-grid { grid-template-columns: 1fr; min-height: auto; }
+    .about-image-side { height: 40vh; }
 }
 
 .about-image-side { overflow: hidden; }
 .about-image-side img { width: 100%; height: 100%; object-fit: cover; }
-.about-text-side { display: flex; align-items: center; padding: clamp(2.5rem, 8vw, 6rem); }
+.about-text-side { display: flex; align-items: center; padding: 3rem; }
 
-.about-description { font-size: clamp(1rem, 2vw, 1.25rem); margin-bottom: 3.5rem; line-height: 1.9; opacity: 0.8; }
+.about-label {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.35rem;
+    color: var(--coffee-medium);
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+}
 
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem; }
-.stat-card { padding: 2.5rem; border: 1px solid rgba(62, 43, 26, 0.05); border-radius: 20px; }
-.stat-number { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--coffee-medium); margin-bottom: 0.5rem; }
-.stat-label { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.15rem; opacity: 0.5; }
+.about-description { font-size: 1.05rem; margin-bottom: 3rem; line-height: 1.8; opacity: 0.75; }
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+.stat-card { padding: 2rem; border: 1px solid rgba(62, 43, 26, 0.05); border-radius: 20px; text-align: center; }
+.stat-number { font-size: clamp(2.2rem, 5vw, 3.5rem); color: var(--coffee-medium); margin-bottom: 0.3rem; }
+.stat-label { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.12rem; opacity: 0.5; }
 
 .about-footer {
     display: flex;
@@ -772,7 +795,7 @@ h1, h2, h3, .nav-logo {
 
 .about-discover-text {
     font-family: var(--font-serif);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--coffee-dark);
 }
 
@@ -794,12 +817,20 @@ h1, h2, h3, .nav-logo {
 }
 
 @media (max-width: 768px) {
+    .about-text-side { padding: 2rem 1.5rem; text-align: center; }
+    .about-description { text-align: center; font-size: 0.95rem; margin-bottom: 2rem; }
+    .stats-grid { gap: 1rem; }
+    .stat-card { padding: 1.2rem; }
+    .stat-number { font-size: 1.8rem; }
+    .stat-label { font-size: 0.65rem; }
     .about-footer { 
         flex-direction: column;
         align-items: center; 
-        gap: 1.5rem;
+        gap: 1rem;
+        margin-top: 1.5rem;
     }
     .about-socials { justify-content: center; }
+    .about-discover-text { font-size: 1.3rem; }
 }
 
 /* Gallery */
