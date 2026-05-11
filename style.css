@@ -383,24 +383,24 @@ h1, h2, h3, .nav-logo {
 
 .hero-btns {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 .hero-btns .btn {
-    min-width: 200px;
+    width: 100%;
+    max-width: 260px;
+    margin: 0;
 }
 
-@media (max-width: 480px) {
+@media (min-width: 500px) {
     .hero-btns {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
     }
     .hero-btns .btn {
-        width: 100%;
-        max-width: 280px;
-        margin: 0.25rem 0;
+        width: auto;
+        min-width: 200px;
     }
 }
 
@@ -583,7 +583,7 @@ h1, h2, h3, .nav-logo {
 
 /* Featured Slider */
 .featured-section {
-    padding: clamp(5rem, 12vw, 10rem) 0;
+    padding: 3rem 0 5rem;
     background: #000000;
     color: var(--white);
     overflow: hidden;
@@ -597,7 +597,11 @@ h1, h2, h3, .nav-logo {
 
 .split-header {
     display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 4rem; flex-wrap: wrap; gap: 2rem;
+    margin-bottom: 2rem; flex-wrap: wrap; gap: 2rem;
+}
+
+.split-header .section-title {
+    color: var(--white);
 }
 
 .glass-card-dark {
@@ -610,10 +614,14 @@ h1, h2, h3, .nav-logo {
 }
 
 .slider-arrow {
-    background: transparent; border: 1px solid rgba(255,255,255,0.3);
-    color: var(--white); width: 50px; height: 50px; border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white); width: 44px; height: 44px; border-radius: 50%;
     cursor: pointer; transition: var(--transition-fast);
     display: flex; justify-content: center; align-items: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 1.2rem;
 }
 
 .slider-arrow:hover { background: var(--white); color: var(--black); border-color: var(--white); }
@@ -622,13 +630,16 @@ h1, h2, h3, .nav-logo {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
-    margin-top: 2.5rem;
     width: 100%;
+    padding: 0 1rem;
+    margin-top: 0.5rem;
 }
 
 .featured-slider-container { 
     width: 100%;
-    overflow: hidden; 
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
 }
 .featured-slider {
     display: flex; 
@@ -819,10 +830,10 @@ h1, h2, h3, .nav-logo {
 @media (max-width: 768px) {
     .about-text-side { padding: 2rem 1.5rem; text-align: center; }
     .about-description { text-align: center; font-size: 0.95rem; margin-bottom: 2rem; }
-    .stats-grid { gap: 1rem; }
-    .stat-card { padding: 1.2rem; }
-    .stat-number { font-size: 1.8rem; }
-    .stat-label { font-size: 0.65rem; }
+    .stats-grid { gap: 0.8rem; }
+    .stat-card { padding: 1rem; }
+    .stat-number { font-size: 1.6rem; }
+    .stat-label { font-size: 0.6rem; letter-spacing: 0.1rem; }
     .about-footer { 
         flex-direction: column;
         align-items: center; 
@@ -831,6 +842,12 @@ h1, h2, h3, .nav-logo {
     }
     .about-socials { justify-content: center; }
     .about-discover-text { font-size: 1.3rem; }
+}
+
+@media (max-width: 400px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat-card { padding: 0.8rem; }
+    .stat-number { font-size: 1.4rem; }
 }
 
 /* Gallery */
@@ -909,6 +926,55 @@ h1, h2, h3, .nav-logo {
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; opacity: 0.5; }
 @media (max-width: 600px) { .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; } }
 .footer-legal a { color: white; text-decoration: none; margin-left: 2rem; }
+
+/* Mobile General Optimization */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    .section-tag {
+        font-size: 0.6rem;
+    }
+    .menu-section {
+        padding: 3rem 0;
+    }
+    .menu-grid {
+        gap: 1.5rem;
+    }
+    .menu-card {
+        padding: 1rem;
+        border-radius: 20px;
+    }
+    .card-img-wrapper {
+        border-radius: 16px;
+        margin-bottom: 1rem;
+    }
+    .card-title {
+        font-size: 1.4rem;
+    }
+    .card-desc {
+        font-size: 0.8rem;
+        height: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .card-price {
+        font-size: 1.2rem;
+    }
+    .gallery-section {
+        padding: 3rem 0;
+    }
+    .gallery-grid {
+        gap: 0.5rem;
+    }
+    .footer {
+        padding: 3rem 0 2rem;
+    }
+    .footer-grid {
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+}
 
 /* Floating Cart Button */
 .floating-cart-btn {
