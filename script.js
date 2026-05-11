@@ -407,9 +407,7 @@ function updateCartUI() {
                     <span class="cart-qty">${item.quantity}</span>
                     <button class="cart-qty-btn" onclick="updateQty(${index}, 1)">+</button>
                 </div>
-                <div style="font-weight: 700; font-size: 1rem; margin-left: 0.5rem; min-width: 70px; text-align: right; color: var(--black);">
-                    $ ${subtotal.toLocaleString()}
-                </div>
+                <span class="cart-item-subtotal">$ ${subtotal.toLocaleString()}</span>
                 <button class="cart-item-remove" onclick="removeFromCart(${index})" title="Eliminar">
                     ×
                 </button>
