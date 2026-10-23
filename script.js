@@ -135,9 +135,10 @@ function startApp() {
     try { initSlideshow(); } catch(e) { console.error('initSlideshow error:', e); }
     try { initNavbar(); } catch(e) { console.error('initNavbar error:', e); }
     try { initMenu(); } catch(e) { console.error('initMenu error:', e); }
-    try { initFeatured(); } catch(e) { console.error('initFeatured error:', e); }
+    try { initProduct3DCarousel(); } catch(e) { console.error('initProduct3DCarousel error:', e); }
     try { initGallery(); } catch(e) { console.error('initGallery error:', e); }
     try { initAnimations(); } catch(e) { console.error('initAnimations error:', e); }
+    try { initTestimonialsCarousel(); } catch(e) { console.error('initTestimonialsCarousel error:', e); }
     try { initStats(); } catch(e) { console.error('initStats error:', e); }
     try { initNewsletter(); } catch(e) { console.error('initNewsletter error:', e); }
 }
@@ -263,6 +264,14 @@ function initMenu() {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+
+            // Centrar el tab seleccionado y asegurar visibilidad del siguiente
+            btn.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center',
+                block: 'nearest'
+            });
+
             const filter = btn.dataset.filter;
             const filtered = filter === 'all' ? MENU_DATA : MENU_DATA.filter(item => item.category === filter);
             renderMenu(filtered);
@@ -270,80 +279,334 @@ function initMenu() {
     });
 }
 
-// --- FEATURED SLIDER ---
-function initFeatured() {
-    const slider = document.getElementById('featured-slider');
-    if (!slider) return;
-    const featuredItems = MENU_DATA.slice(0, 4);
+// --- COMBOS & OFERTAS 3D CAROUSEL DATA ---
+const COMBOS_DATA = [
+    {
+        id: 101,
+        name: "Combo Ritual Matutino",
+        badge: "Ahorrá 20%",
+        oldPrice: 10000,
+        price: 8000,
+        description: "Latte de Lavanda o Flat White + Croissant de Almendras francés tibio recién horneado.",
+        image: "/assets/images/products/pastry/croisant-de-almendra.jpeg",
+        tag: "Desayuno Premium"
+    },
+    {
+        id: 102,
+        name: "Dúo París & Kioto",
+        badge: "Bestseller",
+        oldPrice: 11200,
+        price: 9200,
+        description: "Kyoto Cold Brew infusionado 12 hs + Brownie artesanal de chocolate amargo con nuez.",
+        image: "/assets/images/products/coffee/kyoto-cold-brew.jpg",
+        tag: "Maridaje Estrella"
+    },
+    {
+        id: 103,
+        name: "Hora del Té Real",
+        badge: "Edición Limitada",
+        oldPrice: 8800,
+        price: 6900,
+        description: "Earl Grey Royal de bergamota + Rollo de canela con glaseado sedoso de queso crema.",
+        image: "/assets/images/products/pastry/rollos-de-canela.webp",
+        tag: "Té de la Tarde"
+    },
+    {
+        id: 104,
+        name: "Experiencia Sweet Frappé",
+        badge: "Nuevo Combo",
+        oldPrice: 9300,
+        price: 7600,
+        description: "Frappé cremoso de Oreo o Avellana + Clásica Medialuna de manteca almibarada.",
+        image: "/assets/images/products/frappe/frappe-de-oreo.jpeg",
+        tag: "Placer Dulce"
+    },
+    {
+        id: 105,
+        name: "Trilogía de Degustación",
+        badge: "Oferta Exclusiva",
+        oldPrice: 13500,
+        price: 10500,
+        description: "Flat White Velvet + Degustación de Brownie intenso y Croissant de hojaldre.",
+        image: "/assets/images/products/coffee/flat-white-velvet.jpeg",
+        tag: "Para Compartir"
+    }
+];
 
-    featuredItems.forEach(item => {
-        const feat = document.createElement('div');
-        feat.className = 'feat-item';
-        feat.innerHTML = `
-            <div class="feat-card glass-card-dark">
-                <img src="${item.image}" alt="${item.name}" class="feat-img" loading="lazy">
-                <div class="feat-content">
-                    <span class="section-tag" style="color: var(--coffee-light);">Destacado</span>
-                    <h3>${item.name}</h3>
-                    <p>${item.description}</p>
-                    <div class="card-footer">
-                         <span class="card-price">$ ${item.price.toLocaleString()}</span>
-                         <button class="btn btn-transparent-small" onclick="addToCart(${item.id})">
-                             <img src="/assets/svgs/add-btn/icon.svg" alt="" class="btn-icon">
-                             Probar Ahora
-                         </button>
-                    </div>
-                </div>
-            </div>
-        `;
-        slider.appendChild(feat);
+// Añadir combos a MENU_DATA dinámicamente para que el carrito pueda agregarlos
+COMBOS_DATA.forEach(combo => {
+    if (!MENU_DATA.some(p => p.id === combo.id)) {
+        MENU_DATA.push({
+            id: combo.id,
+            name: combo.name,
+            category: "combo",
+            price: combo.price,
+            description: combo.description,
+            image: combo.image,
+            tags: ["Oferta", combo.badge]
+        });
+    }
+});
+
+// --- PRODUCT 3D CAROUSEL ---
+let carousel3DIndex = 0;
+
+function update3DCarouselDisplay() {
+    const stage = document.getElementById('carousel-3d-stage');
+    if (!stage) return;
+    const cards = stage.querySelectorAll('.carousel-3d-card');
+    const total = cards.length;
+    if (total === 0) return;
+
+    const isMobile = window.innerWidth <= 768;
+    const radius = isMobile ? 220 : 380;
+    const spacingX = isMobile ? 140 : 260;
+
+    cards.forEach((card, idx) => {
+        let diff = idx - carousel3DIndex;
+        while (diff > total / 2) diff -= total;
+        while (diff < -total / 2) diff += total;
+
+        card.classList.remove('active', 'prev', 'next', 'hidden');
+
+        if (diff === 0) {
+            card.classList.add('active');
+            card.style.transform = `translate3d(0, 0, 0) scale(1) rotateY(0deg)`;
+            card.style.opacity = '1';
+            card.style.zIndex = '10';
+            card.style.pointerEvents = 'auto';
+        } else if (diff === 1) {
+            card.classList.add('next');
+            card.style.transform = `translate3d(${spacingX}px, 0, -${radius * 0.4}px) scale(0.85) rotateY(-28deg)`;
+            card.style.opacity = '0.75';
+            card.style.zIndex = '5';
+            card.style.pointerEvents = 'auto';
+        } else if (diff === -1) {
+            card.classList.add('prev');
+            card.style.transform = `translate3d(-${spacingX}px, 0, -${radius * 0.4}px) scale(0.85) rotateY(28deg)`;
+            card.style.opacity = '0.75';
+            card.style.zIndex = '5';
+            card.style.pointerEvents = 'auto';
+        } else if (Math.abs(diff) === 2) {
+            const sign = Math.sign(diff);
+            card.style.transform = `translate3d(${sign * spacingX * 1.6}px, 0, -${radius * 0.8}px) scale(0.7) rotateY(${-sign * 42}deg)`;
+            card.style.opacity = '0.35';
+            card.style.zIndex = '2';
+            card.style.pointerEvents = 'none';
+        } else {
+            card.classList.add('hidden');
+            card.style.transform = `translate3d(0, 0, -${radius}px) scale(0.5)`;
+            card.style.opacity = '0';
+            card.style.zIndex = '1';
+            card.style.pointerEvents = 'none';
+        }
     });
 
-    slider.classList.remove('marquee-slider');
-
-    let currentOffset = 0;
-
-    function getOffsetWidth() {
-        const firstItem = slider.querySelector('.feat-item');
-        return firstItem ? firstItem.offsetWidth : window.innerWidth;
-    }
-
-    function moveSlider(direction) {
-        const itemWidth = getOffsetWidth();
-        const maxOffset = -(itemWidth * (featuredItems.length - 1));
-
-        if (direction === 'next') {
-            currentOffset = currentOffset <= maxOffset ? 0 : currentOffset - itemWidth;
-        } else {
-            currentOffset = currentOffset >= 0 ? maxOffset : currentOffset + itemWidth;
-        }
-        slider.style.transform = `translateX(${currentOffset}px)`;
-    }
-
-    const nextBtn = document.getElementById('next-feat');
-    const prevBtn = document.getElementById('prev-feat');
-    if (nextBtn) nextBtn.addEventListener('click', () => moveSlider('next'));
-    if (prevBtn) prevBtn.addEventListener('click', () => moveSlider('prev'));
-
-    window.addEventListener('resize', () => {
-        currentOffset = 0;
-        slider.style.transform = `translateX(0)`;
+    const dots = document.querySelectorAll('#carousel-3d-dots .carousel-3d-dot');
+    dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === carousel3DIndex);
     });
 }
 
-// --- GALLERY ---
+window.slideCarousel3D = function(direction) {
+    const stage = document.getElementById('carousel-3d-stage');
+    if (!stage) return;
+    const cards = stage.querySelectorAll('.carousel-3d-card');
+    const total = cards.length || 5;
+
+    if (direction === 'next') {
+        carousel3DIndex = (carousel3DIndex + 1) % total;
+    } else if (direction === 'prev') {
+        carousel3DIndex = (carousel3DIndex - 1 + total) % total;
+    } else if (typeof direction === 'number') {
+        carousel3DIndex = direction;
+    }
+    update3DCarouselDisplay();
+};
+
+function initProduct3DCarousel() {
+    const stage = document.getElementById('carousel-3d-stage');
+    if (!stage) return;
+    const dotsContainer = document.getElementById('carousel-3d-dots');
+    const prevBtn = document.getElementById('carousel-3d-prev');
+    const nextBtn = document.getElementById('carousel-3d-next');
+    let cards = stage.querySelectorAll('.carousel-3d-card');
+
+    // Generar dinámicamente si no estaban en el HTML
+    if (cards.length === 0) {
+        COMBOS_DATA.forEach((combo, idx) => {
+            const card = document.createElement('div');
+            card.className = 'carousel-3d-card';
+            card.dataset.index = idx;
+            card.innerHTML = `
+                <div class="carousel-3d-card-inner">
+                    <div class="carousel-3d-badge">${combo.badge}</div>
+                    <div class="carousel-3d-img-box">
+                        <img src="${combo.image}" alt="${combo.name}" loading="lazy">
+                    </div>
+                    <div class="carousel-3d-info">
+                        <span class="carousel-3d-tag">${combo.tag}</span>
+                        <h3 class="carousel-3d-title">${combo.name}</h3>
+                        <p class="carousel-3d-desc">${combo.description}</p>
+                        <div class="carousel-3d-pricing">
+                            <span class="carousel-3d-old-price">$ ${combo.oldPrice.toLocaleString()}</span>
+                            <span class="carousel-3d-new-price">$ ${combo.price.toLocaleString()}</span>
+                        </div>
+                        <button class="btn btn-primary carousel-3d-btn" onclick="addToCart(${combo.id})">
+                            <img src="/assets/svgs/add-btn/icon.svg" alt="" class="btn-icon">
+                            Pedir Combo
+                        </button>
+                    </div>
+                </div>
+            `;
+            stage.appendChild(card);
+        });
+        cards = stage.querySelectorAll('.carousel-3d-card');
+    }
+
+    // Vincular clic en tarjetas
+    cards.forEach((card, idx) => {
+        card.addEventListener('click', (e) => {
+            if (e.target.closest('button')) return;
+            if (carousel3DIndex !== idx) {
+                window.slideCarousel3D(idx);
+            }
+        });
+    });
+
+    // Generar dots
+    if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        cards.forEach((_, idx) => {
+            const dot = document.createElement('button');
+            dot.className = `carousel-3d-dot ${idx === carousel3DIndex ? 'active' : ''}`;
+            dot.setAttribute('aria-label', `Ir a combo ${idx + 1}`);
+            dot.addEventListener('click', () => {
+                window.slideCarousel3D(idx);
+            });
+            dotsContainer.appendChild(dot);
+        });
+    }
+
+    // Botones prev / next
+    if (prevBtn) {
+        prevBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.slideCarousel3D('prev');
+        };
+    }
+
+    if (nextBtn) {
+        nextBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.slideCarousel3D('next');
+        };
+    }
+
+    // Gesto táctil / swipe en móvil
+    let touchStartX = 0;
+    stage.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    stage.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const diffX = touchEndX - touchStartX;
+        if (Math.abs(diffX) > 35) {
+            window.slideCarousel3D(diffX < 0 ? 'next' : 'prev');
+        }
+    }, { passive: true });
+
+    window.addEventListener('resize', update3DCarouselDisplay);
+    update3DCarouselDisplay();
+}
+
+// --- GALLERY (Masonry + Image Mask Reveal + Parallax) ---
 function initGallery() {
     const gallery = document.querySelector('.gallery-grid');
     if (!gallery) return;
-    GALLERY_DATA.forEach(img => {
+
+    // Alturas dinámicas estilo Pinterest y factores de velocidad parallax
+    const itemConfigs = [
+        { heightClass: 'tall', speed: 0.08, label: 'Interior Minimalista' },
+        { heightClass: 'medium', speed: -0.05, label: 'Ritual de Filtrado' },
+        { heightClass: 'wide', speed: 0.06, label: 'Espacio Exterior' },
+        { heightClass: 'tall', speed: -0.07, label: 'Horneado Artesanal' },
+        { heightClass: 'medium', speed: 0.09, label: 'Arte Latte' },
+        { heightClass: 'tall', speed: -0.04, label: 'Rincón de Lectura' },
+        { heightClass: 'medium', speed: 0.07, label: 'Barra de Especialidad' },
+        { heightClass: 'tall', speed: -0.06, label: 'Atardecer en Palermo' }
+    ];
+
+    gallery.innerHTML = '';
+
+    GALLERY_DATA.forEach((img, idx) => {
+        const config = itemConfigs[idx % itemConfigs.length];
         const item = document.createElement('div');
-        item.className = 'gallery-item fade-in';
+        item.className = `gallery-masonry-item ${config.heightClass}`;
+        item.dataset.parallaxSpeed = config.speed;
         item.innerHTML = `
-            <img src="${img}" alt="Cafe Gallery" loading="lazy">
-            <div class="gallery-overlay"></div>
+            <div class="gallery-mask-wrapper">
+                <div class="gallery-mask-curtain"></div>
+                <div class="gallery-parallax-inner">
+                    <img src="${img}" alt="${config.label}" class="gallery-parallax-img" loading="lazy">
+                </div>
+                <div class="gallery-overlay">
+                    <span class="gallery-tag">L'Artiste</span>
+                    <span class="gallery-caption">${config.label}</span>
+                </div>
+            </div>
         `;
         gallery.appendChild(item);
     });
+
+    // IntersectionObserver para Image Mask Reveal animado
+    const maskObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    const maskItems = gallery.querySelectorAll('.gallery-masonry-item');
+    maskItems.forEach(item => maskObserver.observe(item));
+
+    // Parallax Gallery: Desplazamiento a velocidades diferentes durante el scroll
+    let ticking = false;
+    function updateGalleryParallax() {
+        const windowHeight = window.innerHeight;
+        maskItems.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            // Solo calcular si está cerca del viewport
+            if (rect.top < windowHeight && rect.bottom > 0) {
+                const speed = parseFloat(item.dataset.parallaxSpeed) || 0.05;
+                const distanceToCenter = (rect.top + rect.height / 2) - (windowHeight / 2);
+                const translateY = distanceToCenter * speed;
+                const inner = item.querySelector('.gallery-parallax-inner');
+                if (inner) {
+                    inner.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0)`;
+                }
+            }
+        });
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateGalleryParallax);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // Ejecutar cálculo inicial
+    setTimeout(updateGalleryParallax, 200);
 }
 
 // --- CART LOGIC ---
@@ -567,4 +830,174 @@ function showToast(message) {
         toast.style.transform = 'translateX(-50%) translateY(20px)';
         setTimeout(() => toast.remove(), 400);
     }, 3000);
+}
+
+// --- TESTIMONIALS AUTOPLAY CAROUSEL ---
+function initTestimonialsCarousel() {
+    const track = document.getElementById('testimonials-track');
+    const dotsContainer = document.getElementById('testimonials-dots');
+    const prevBtn = document.getElementById('testimonials-prev');
+    const nextBtn = document.getElementById('testimonials-next');
+    if (!track) return;
+
+    const cards = track.querySelectorAll('.testimonial-card');
+    const totalCards = cards.length;
+    if (totalCards === 0) return;
+
+    let currentIndex = 0;
+    let autoplayTimer = null;
+    let isHovered = false;
+
+    // Calcular cuántos cards se muestran según resolución
+    function getVisibleCardsCount() {
+        if (window.innerWidth <= 640) return 1;
+        if (window.innerWidth <= 992) return 2;
+        return 3;
+    }
+
+    function getMaxIndex() {
+        const visible = getVisibleCardsCount();
+        return Math.max(0, totalCards - visible);
+    }
+
+    // Generar dots dinámicamente
+    function setupDots() {
+        if (!dotsContainer) return;
+        dotsContainer.innerHTML = '';
+        const maxIndex = getMaxIndex();
+        const totalDots = maxIndex + 1;
+
+        for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement('button');
+            dot.className = `testimonials-dot ${i === currentIndex ? 'active' : ''}`;
+            dot.setAttribute('aria-label', `Ir a reseña ${i + 1}`);
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+                resetAutoplay();
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateTrack() {
+        const maxIndex = getMaxIndex();
+        if (currentIndex > maxIndex) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = maxIndex;
+
+        const visible = getVisibleCardsCount();
+        let cardPercentage = 100 / visible;
+        // Tomar en cuenta el gap de 2rem (32px) o 1.25rem (20px en móvil)
+        const gapPx = window.innerWidth <= 640 ? 20 : 32;
+        const offsetPx = currentIndex * (track.children[0].offsetWidth + gapPx);
+
+        track.style.transform = `translateX(-${offsetPx}px)`;
+
+        // Actualizar dots
+        const dots = dotsContainer ? dotsContainer.querySelectorAll('.testimonials-dot') : [];
+        dots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === currentIndex);
+        });
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateTrack();
+    }
+
+    function nextSlide() {
+        const maxIndex = getMaxIndex();
+        if (currentIndex >= maxIndex) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        updateTrack();
+    }
+
+    function prevSlide() {
+        const maxIndex = getMaxIndex();
+        if (currentIndex <= 0) {
+            currentIndex = maxIndex;
+        } else {
+            currentIndex--;
+        }
+        updateTrack();
+    }
+
+    // Botones
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoplay();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoplay();
+        });
+    }
+
+    // Autoplay continuo cada 4 segundos
+    function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(() => {
+            if (!isHovered) {
+                nextSlide();
+            }
+        }, 4000);
+    }
+
+    function stopAutoplay() {
+        if (autoplayTimer) {
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
+        }
+    }
+
+    function resetAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+    }
+
+    // Pausar autoplay al pasar el cursor o interactuar
+    const wrapper = track.closest('.testimonials-carousel-wrapper');
+    if (wrapper) {
+        wrapper.addEventListener('mouseenter', () => {
+            isHovered = true;
+        });
+        wrapper.addEventListener('mouseleave', () => {
+            isHovered = false;
+        });
+    }
+
+    // Soporte táctil / swipe
+    let touchStartX = 0;
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        stopAutoplay();
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const diffX = touchEndX - touchStartX;
+        if (Math.abs(diffX) > 40) {
+            if (diffX < 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+        startAutoplay();
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+        setupDots();
+        updateTrack();
+    });
+
+    setupDots();
+    updateTrack();
+    startAutoplay();
 }
