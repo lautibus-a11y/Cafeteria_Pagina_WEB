@@ -1032,6 +1032,7 @@ h1, h2, h3, .nav-logo {
     }
 }
 
+.featured-section {
     padding: 3rem 0 5rem;
     background: #000000;
     color: var(--white);
