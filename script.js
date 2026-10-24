@@ -82,7 +82,7 @@ const MENU_DATA = [
         category: "pastry",
         price: 3800,
         description: "Brownie húmedo de chocolate semi-amargo con nueces.",
-        image: "assets/images/products/pastry/brownie.jpeg",
+        image: "assets/images/products/pastry/Brownie.jpeg",
         tags: ["Intenso"]
     },
     {
@@ -115,14 +115,14 @@ const MENU_DATA = [
 ];
 
 const GALLERY_DATA = [
-    "assets/images/gallery/coffee_shop_exterior_interior_202605091452.jpeg",
-    "assets/images/gallery/coffee_shop_interior_buenos_aires_202605091454.jpeg",
-    "assets/images/gallery/gemini_generated_image_ba408pba408pba40.png",
-    "assets/images/gallery/gemini_generated_image_v0h59lv0h59lv0h5.png",
-    "assets/images/gallery/gemini_generated_image_2uwvqi2uwvqi2uwv.png",
-    "assets/images/gallery/gemini_generated_image_k9tujzk9tujzk9tu.png",
-    "assets/images/gallery/gemini_generated_image_oq6cygoq6cygoq6c.png",
-    "assets/images/gallery/gemini_generated_image_rdalu1rdalu1rdal.png"
+    "assets/images/gallery/Coffee_shop_exterior_interior_202605091452.jpeg",
+    "assets/images/gallery/Coffee_shop_interior_Buenos_Aires_202605091454.jpeg",
+    "assets/images/gallery/Gemini_Generated_Image_ba408pba408pba40.png",
+    "assets/images/gallery/Gemini_Generated_Image_v0h59lv0h59lv0h5.png",
+    "assets/images/gallery/Gemini_Generated_Image_2uwvqi2uwvqi2uwv.png",
+    "assets/images/gallery/Gemini_Generated_Image_k9tujzk9tujzk9tu.png",
+    "assets/images/gallery/Gemini_Generated_Image_oq6cygoq6cygoq6c.png",
+    "assets/images/gallery/Gemini_Generated_Image_rdalu1rdalu1rdal.png"
 ];
 
 // --- APP STATE ---
@@ -623,7 +623,13 @@ window.addToCart = (id) => {
     }
 
     updateCartUI();
-    showToast(`"${product.name}" agregado al carrito`);
+
+    // Abrir directamente el modal del carrito sin mostrar el toast
+    const modalOverlay = document.getElementById('cart-modal-overlay');
+    if (modalOverlay) {
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 };
 
 function updateCartUI() {
