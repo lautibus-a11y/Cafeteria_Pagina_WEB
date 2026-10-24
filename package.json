@@ -4,6 +4,7 @@
   "description": "L'Artiste Café - Experiencia Premium (Vanilla HTML, CSS, JS)",
   "scripts": {
     "dev": "serve . -p 3000",
+    "build": "echo 'Vanilla static site - no build step needed'",
     "start": "serve . -p 3000"
   },
   "devDependencies": {
