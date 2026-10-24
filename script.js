@@ -624,11 +624,12 @@ window.addToCart = (id) => {
 
     updateCartUI();
 
-    // Abrir directamente el modal del carrito sin mostrar el toast
-    const modalOverlay = document.getElementById('cart-modal-overlay');
-    if (modalOverlay) {
-        modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+    // Feedback en el botón flotante del carrito (pequeño rebote al agregar)
+    const floatBtn = document.getElementById('floating-cart-btn');
+    if (floatBtn) {
+        floatBtn.classList.remove('cart-bounce');
+        void floatBtn.offsetWidth; // Trigger reflow
+        floatBtn.classList.add('cart-bounce');
     }
 };
 

@@ -2015,6 +2015,17 @@ h1, h2, h3, .nav-logo {
     bottom: 40px;
 }
 
+.floating-cart-btn.cart-bounce {
+    animation: cartBounce 0.45s ease;
+}
+
+@keyframes cartBounce {
+    0% { transform: translateX(-50%) scale(1); }
+    40% { transform: translateX(-50%) scale(1.15) translateY(-8px); }
+    70% { transform: translateX(-50%) scale(0.95); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
 .floating-cart-btn:hover {
     transform: translateX(-50%) translateY(-5px) scale(1.05);
     background: var(--coffee-dark);
