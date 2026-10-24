@@ -10,7 +10,7 @@ const MENU_DATA = [
         category: "coffee",
         price: 5500,
         description: "Expresso de especialidad infusionado con flores de lavanda orgánica.",
-        image: "/assets/images/products/coffee/latte-de-lavanda.jpg",
+        image: "assets/images/products/coffee/latte-de-lavanda.jpg",
         tags: ["Floral", "Bestseller"]
     },
     {
@@ -19,7 +19,7 @@ const MENU_DATA = [
         category: "coffee",
         price: 6200,
         description: "Cold brew de 12 horas con notas cítricas y miel.",
-        image: "/assets/images/products/coffee/kyoto-cold-brew.jpg",
+        image: "assets/images/products/coffee/kyoto-cold-brew.jpg",
         tags: ["Frío", "Premium"]
     },
     {
@@ -28,7 +28,7 @@ const MENU_DATA = [
         category: "tea",
         price: 4800,
         description: "Té negro premium con bergamota de Calabria y pétalos de aciano.",
-        image: "/assets/images/products/tea/earlye-grey-royal-te.webp",
+        image: "assets/images/products/tea/earlye-grey-royal-te.webp",
         tags: ["Elegante"]
     },
     {
@@ -37,7 +37,7 @@ const MENU_DATA = [
         category: "frappe",
         price: 6800,
         description: "Crema de avellanas tostadas, cacao puro y hielo triturado.",
-        image: "/assets/images/products/frappe/frappe-de-avellana.webp",
+        image: "assets/images/products/frappe/frappe-de-avellana.webp",
         tags: ["Nuevo"]
     },
     {
@@ -46,7 +46,7 @@ const MENU_DATA = [
         category: "pastry",
         price: 4500,
         description: "Hojaldre artesanal francés con crema de almendras y aroma de azahar.",
-        image: "/assets/images/products/pastry/croisant-de-almendra.jpeg",
+        image: "assets/images/products/pastry/croisant-de-almendra.jpeg",
         tags: ["Artesanal"]
     },
     {
@@ -55,7 +55,7 @@ const MENU_DATA = [
         category: "coffee",
         price: 5000,
         description: "Doble shot de expresso con leche micro-cremada sedosa.",
-        image: "/assets/images/products/coffee/flat-white-velvet.jpeg",
+        image: "assets/images/products/coffee/flat-white-velvet.jpeg",
         tags: ["Clásico"]
     },
     {
@@ -64,7 +64,7 @@ const MENU_DATA = [
         category: "pastry",
         price: 2500,
         description: "Clásica medialuna de manteca, suave y almibarada.",
-        image: "/assets/images/products/pastry/media-luna-de-manteca.jpg",
+        image: "assets/images/products/pastry/media-luna-de-manteca.jpg",
         tags: ["Clásico"]
     },
     {
@@ -73,7 +73,7 @@ const MENU_DATA = [
         category: "pastry",
         price: 4000,
         description: "Esponjoso rollo de canela con glaseado de queso crema.",
-        image: "/assets/images/products/pastry/rollos-de-canela.webp",
+        image: "assets/images/products/pastry/rollos-de-canela.webp",
         tags: ["Dulce"]
     },
     {
@@ -82,7 +82,7 @@ const MENU_DATA = [
         category: "pastry",
         price: 3800,
         description: "Brownie húmedo de chocolate semi-amargo con nueces.",
-        image: "/assets/images/products/pastry/brownie.jpeg",
+        image: "assets/images/products/pastry/brownie.jpeg",
         tags: ["Intenso"]
     },
     {
@@ -91,7 +91,7 @@ const MENU_DATA = [
         category: "frappe",
         price: 6500,
         description: "Frappé cremoso con galletas Oreo trituradas y crema batida.",
-        image: "/assets/images/products/frappe/frappe-de-oreo.jpeg",
+        image: "assets/images/products/frappe/frappe-de-oreo.jpeg",
         tags: ["Dulce"]
     },
     {
@@ -100,7 +100,7 @@ const MENU_DATA = [
         category: "tea",
         price: 3500,
         description: "Infusión relajante de flores de manzanilla naturales.",
-        image: "/assets/images/products/tea/infusion-de-manzanilla.webp",
+        image: "assets/images/products/tea/infusion-de-manzanilla.webp",
         tags: ["Suave"]
     },
     {
@@ -109,20 +109,20 @@ const MENU_DATA = [
         category: "tea",
         price: 4200,
         description: "Té verde japonés tradicional con notas herbáceas.",
-        image: "/assets/images/products/tea/te-verde.jpg",
+        image: "assets/images/products/tea/te-verde.jpg",
         tags: ["Detox"]
     }
 ];
 
 const GALLERY_DATA = [
-    "/assets/images/gallery/coffee_shop_exterior_interior_202605091452.jpeg",
-    "/assets/images/gallery/coffee_shop_interior_buenos_aires_202605091454.jpeg",
-    "/assets/images/gallery/gemini_generated_image_ba408pba408pba40.png",
-    "/assets/images/gallery/gemini_generated_image_v0h59lv0h59lv0h5.png",
-    "/assets/images/gallery/gemini_generated_image_2uwvqi2uwvqi2uwv.png",
-    "/assets/images/gallery/gemini_generated_image_k9tujzk9tujzk9tu.png",
-    "/assets/images/gallery/gemini_generated_image_oq6cygoq6cygoq6c.png",
-    "/assets/images/gallery/gemini_generated_image_rdalu1rdalu1rdal.png"
+    "assets/images/gallery/coffee_shop_exterior_interior_202605091452.jpeg",
+    "assets/images/gallery/coffee_shop_interior_buenos_aires_202605091454.jpeg",
+    "assets/images/gallery/gemini_generated_image_ba408pba408pba40.png",
+    "assets/images/gallery/gemini_generated_image_v0h59lv0h59lv0h5.png",
+    "assets/images/gallery/gemini_generated_image_2uwvqi2uwvqi2uwv.png",
+    "assets/images/gallery/gemini_generated_image_k9tujzk9tujzk9tu.png",
+    "assets/images/gallery/gemini_generated_image_oq6cygoq6cygoq6c.png",
+    "assets/images/gallery/gemini_generated_image_rdalu1rdalu1rdal.png"
 ];
 
 // --- APP STATE ---
@@ -246,7 +246,7 @@ function initMenu() {
                     <div class="card-footer">
                         <span class="card-price">$ ${item.price.toLocaleString()}</span>
                         <button class="add-btn" onclick="addToCart(${item.id})">
-                            <img src="/assets/svgs/add-btn/icon.svg" alt="" class="btn-icon">
+                            <img src="assets/svgs/add-btn/icon.svg" alt="" class="btn-icon">
                             Añadir
                         </button>
                     </div>
@@ -288,7 +288,7 @@ const COMBOS_DATA = [
         oldPrice: 10000,
         price: 8000,
         description: "Latte de Lavanda o Flat White + Croissant de Almendras francés tibio recién horneado.",
-        image: "/assets/images/products/pastry/croisant-de-almendra.jpeg",
+        image: "assets/images/products/pastry/croisant-de-almendra.jpeg",
         tag: "Desayuno Premium"
     },
     {
@@ -298,7 +298,7 @@ const COMBOS_DATA = [
         oldPrice: 11200,
         price: 9200,
         description: "Kyoto Cold Brew infusionado 12 hs + Brownie artesanal de chocolate amargo con nuez.",
-        image: "/assets/images/products/coffee/kyoto-cold-brew.jpg",
+        image: "assets/images/products/coffee/kyoto-cold-brew.jpg",
         tag: "Maridaje Estrella"
     },
     {
@@ -308,7 +308,7 @@ const COMBOS_DATA = [
         oldPrice: 8800,
         price: 6900,
         description: "Earl Grey Royal de bergamota + Rollo de canela con glaseado sedoso de queso crema.",
-        image: "/assets/images/products/pastry/rollos-de-canela.webp",
+        image: "assets/images/products/pastry/rollos-de-canela.webp",
         tag: "Té de la Tarde"
     },
     {
@@ -318,7 +318,7 @@ const COMBOS_DATA = [
         oldPrice: 9300,
         price: 7600,
         description: "Frappé cremoso de Oreo o Avellana + Clásica Medialuna de manteca almibarada.",
-        image: "/assets/images/products/frappe/frappe-de-oreo.jpeg",
+        image: "assets/images/products/frappe/frappe-de-oreo.jpeg",
         tag: "Placer Dulce"
     },
     {
@@ -328,7 +328,7 @@ const COMBOS_DATA = [
         oldPrice: 13500,
         price: 10500,
         description: "Flat White Velvet + Degustación de Brownie intenso y Croissant de hojaldre.",
-        image: "/assets/images/products/coffee/flat-white-velvet.jpeg",
+        image: "assets/images/products/coffee/flat-white-velvet.jpeg",
         tag: "Para Compartir"
     }
 ];
@@ -453,7 +453,7 @@ function initProduct3DCarousel() {
                             <span class="carousel-3d-new-price">$ ${combo.price.toLocaleString()}</span>
                         </div>
                         <button class="btn btn-primary carousel-3d-btn" onclick="addToCart(${combo.id})">
-                            <img src="/assets/svgs/add-btn/icon.svg" alt="" class="btn-icon">
+                            <img src="assets/svgs/add-btn/icon.svg" alt="" class="btn-icon">
                             Pedir Combo
                         </button>
                     </div>
@@ -612,6 +612,8 @@ function initGallery() {
 // --- CART LOGIC ---
 window.addToCart = (id) => {
     const product = MENU_DATA.find(p => p.id === id);
+    if (!product) return;
+
     const existing = cart.find(item => item.product.id === id);
 
     if (existing) {
@@ -621,6 +623,7 @@ window.addToCart = (id) => {
     }
 
     updateCartUI();
+    showToast(`"${product.name}" agregado al carrito`);
 };
 
 function updateCartUI() {

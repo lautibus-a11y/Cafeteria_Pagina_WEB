@@ -1,21 +1,29 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# L'Artiste Café - Experiencia Premium
 
-# Run and deploy your AI Studio app
+Sitio web estático moderno desarrollado con arquitectura **Vanilla (HTML5 semántico, CSS3 puro y JavaScript ES6+)**, ultra liviano y sin dependencias pesadas.
 
-This contains everything you need to run your app locally.
+## Estructura del Proyecto
 
-View your app in AI Studio: https://ai.studio/apps/06f966eb-5e73-421f-bcf8-09eca848fe24
+```text
+├── index.html        # Estructura semántica completa
+├── style.css         # Estilos, variables CSS, animaciones y diseño responsive
+├── script.js         # Lógica interactiva del menú, carrito, filtros y modales
+├── assets/           # Imágenes, vectores SVG y videos
+└── vercel.json       # Configuración para despliegue estático
+```
 
-## Run Locally
+## Ejecución Local
 
-**Prerequisites:**  Node.js
+No requiere compilación ni dependencias para funcionar.
 
+### Opción 1: Abrir directamente
+Puedes abrir `index.html` con cualquier navegador web o usar la extensión **Live Server** de tu editor.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
-# Cafeteria_Pagina_WEB
+### Opción 2: Con servidor estático
+```bash
+npx serve . -p 3000
+```
+O con npm:
+```bash
+npm run dev
+```
